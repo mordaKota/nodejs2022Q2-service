@@ -28,16 +28,14 @@ export class TrackService {
     id: string,
     updateTrackDto: UpdateTrackDto,
   ): Promise<Track | undefined> {
-    console.log(id);
     const track = await this.findOne(id);
-    console.log(track);
     if (track) {
       Object.assign(track, updateTrackDto);
     }
     return track;
   }
 
-  remove(id: string) {
+  async remove(id: string): Promise<void> {
     tracks.splice(tracks.indexOf(tracks.filter((track) => track.id === id)), 1);
   }
 

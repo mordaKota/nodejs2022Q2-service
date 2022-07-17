@@ -15,11 +15,15 @@ import { ArtistService } from './artist.service';
 import { CreateArtistDto } from './dto/create-artist.dto';
 import { UpdateArtistDto } from './dto/update-artist.dto';
 import { FavoritesService } from '../favorites/favorites.service';
+import { AlbumService } from '../album/album.service';
+import { TrackService } from '../track/track.service';
 
 @Controller('artist')
 export class ArtistController {
   constructor(
     private readonly artistService: ArtistService,
+    private readonly albumService: AlbumService,
+    private readonly trackService: TrackService,
     private readonly favoritesService: FavoritesService,
   ) {}
 
@@ -62,6 +66,7 @@ export class ArtistController {
       throw new NotFoundException(`The artist with id = ${id} doesn't exist`);
     }
     await this.artistService.remove(id);
-    //this.favouritesService.removeTrackRef(id);
+    await this.albumService.removeArtistRef(id);
+    await this.trackService.removeArtistRef(id);
   }
 }

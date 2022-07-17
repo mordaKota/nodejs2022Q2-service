@@ -35,7 +35,7 @@ export class TrackController {
 
   @Get(':id')
   async findOne(@Param('id', ParseUUIDPipe) id: string) {
-    const track = this.trackService.findOne(id);
+    const track = await this.trackService.findOne(id);
     if (!track) {
       throw new NotFoundException(`The track with id = ${id} doesn't exist`);
     }
@@ -61,7 +61,7 @@ export class TrackController {
     if (!track) {
       throw new NotFoundException(`The track with id = ${id} doesn't exist`);
     }
-    this.trackService.remove(id);
+    await this.trackService.remove(id);
     //this.favoritesService.removeTrackRef(id);
   }
 }

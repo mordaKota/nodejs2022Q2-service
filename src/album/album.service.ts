@@ -1,26 +1,49 @@
 import { Injectable } from '@nestjs/common';
 import { CreateAlbumDto } from './dto/create-album.dto';
 import { UpdateAlbumDto } from './dto/update-album.dto';
+import { Album } from './entities/album.entity';
+import { v4 } from 'uuid';
+import { albums } from '../in-memory-db';
 
 @Injectable()
 export class AlbumService {
-  create(createAlbumDto: CreateAlbumDto) {
-    return 'This action adds a new album';
+  async create(createAlbumDto: CreateAlbumDto): Promise<Album> {
+    const newAlbum = {
+      ...createAlbumDto,
+      id: v4(),
+    };
+    albums.push(newAlbum);
+    return newAlbum;
   }
 
-  findAll() {
-    return `This action returns all album`;
+  async findAll(): Promise<Album[]> {
+    return albums;
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} album`;
+  async findOne(id: string): Promise<Album | undefined> {
+    return albums.find((album) => album.id === id);
   }
 
-  update(id: number, updateAlbumDto: UpdateAlbumDto) {
-    return `This action updates a #${id} album`;
+  async update(
+    id: string,
+    updateAlbumDto: UpdateAlbumDto,
+  ): Promise<Album | undefined> {
+    const album = await this.findOne(id);
+    if (album) {
+      Object.assign(album, updateAlbumDto);
+    }
+    return album;
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} album`;
+  async remove(id: string): Promise<void> {
+    albums.splice(albums.indexOf(albums.filter((album) => album.id === id)), 1);
+  }
+
+  removeArtistRef(artistId: string) {
+    albums.forEach((album) => {
+      if (album.artistId === artistId) {
+        album.artistId = null;
+      }
+    });
   }
 }
