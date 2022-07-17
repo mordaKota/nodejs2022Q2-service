@@ -62,6 +62,6 @@ export class TrackController {
       throw new NotFoundException(`The track with id = ${id} doesn't exist`);
     }
     await this.trackService.remove(id);
-    //this.favoritesService.removeTrackRef(id);
+    await this.favoritesService.removeTrackRef(id);
   }
 }

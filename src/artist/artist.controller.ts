@@ -68,5 +68,6 @@ export class ArtistController {
     await this.artistService.remove(id);
     await this.albumService.removeArtistRef(id);
     await this.trackService.removeArtistRef(id);
+    await this.favoritesService.removeArtistRef(id);
   }
 }

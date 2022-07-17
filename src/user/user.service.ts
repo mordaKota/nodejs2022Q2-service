@@ -8,18 +8,21 @@ import { v4 } from 'uuid';
 @Injectable()
 export class UserService {
   async create(createUserDto: CreateUserDto): Promise<User> {
-    const newUser = {
+    const newUser = new User({
       ...createUserDto,
       id: v4(),
       version: 1,
       createdAt: Date.now(),
       updatedAt: Date.now(),
-    };
+    });
+
     users.push(newUser);
     return newUser;
   }
 
   async findAll(): Promise<User[]> {
+    console.log(users);
+
     return users;
   }
 
@@ -36,7 +39,6 @@ export class UserService {
       if (updateUserDto.oldPassword !== user.password) {
         throw new Error('Not Exists');
       }
-
       user.password = updateUserDto.newPassword;
       user.version += user.version;
       user.updatedAt = Date.now();

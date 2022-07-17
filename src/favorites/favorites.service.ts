@@ -79,4 +79,22 @@ export class FavoritesService {
     const albumsId = favAlbumIds.filter((albumId) => albumId === id);
     favAlbumIds.splice(favAlbumIds.indexOf(albumsId[0]), 1);
   }
+
+  removeAlbumRef(id: string) {
+    const albumsIdsInFavs = favorites.albums;
+    const index = albumsIdsInFavs.findIndex((albumId) => albumId === id);
+    albumsIdsInFavs.splice(index, 1);
+  }
+
+  removeTrackRef(id: string) {
+    const tracksIdsInFavs = favorites.tracks;
+    const index = tracksIdsInFavs.findIndex((trackId) => trackId === id);
+    tracksIdsInFavs.splice(index, 1);
+  }
+
+  removeArtistRef(id: string) {
+    const artistsIdsInFavs = favorites.artists;
+    const index = artistsIdsInFavs.findIndex((artistId) => artistId === id);
+    artistsIdsInFavs.splice(index, 1);
+  }
 }

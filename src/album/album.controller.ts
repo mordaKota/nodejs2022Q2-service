@@ -65,5 +65,6 @@ export class AlbumController {
     }
     await this.albumService.remove(id);
     await this.trackService.removeAlbumRef(id);
+    await this.favoritesService.removeAlbumRef(id);
   }
 }

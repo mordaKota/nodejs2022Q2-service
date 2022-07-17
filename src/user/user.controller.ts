@@ -11,6 +11,8 @@ import {
   ParseUUIDPipe,
   HttpCode,
   HttpStatus,
+  UseInterceptors,
+  ClassSerializerInterceptor,
 } from '@nestjs/common';
 import { UserService } from './user.service';
 import { CreateUserDto } from './dto/create-user.dto';
@@ -20,17 +22,20 @@ import { UpdateUserDto } from './dto/update-user.dto';
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
+  @UseInterceptors(ClassSerializerInterceptor)
   @Post()
   create(@Body() createUserDto: CreateUserDto) {
     return this.userService.create(createUserDto);
   }
 
   @Get()
+  @UseInterceptors(ClassSerializerInterceptor)
   findAll() {
     return this.userService.findAll();
   }
 
   @Get(':id')
+  @UseInterceptors(ClassSerializerInterceptor)
   async findOne(@Param('id', ParseUUIDPipe) id: string) {
     const user = await this.userService.findOne(id);
     if (!user) {
@@ -40,6 +45,7 @@ export class UserController {
   }
 
   @Put(':id')
+  @UseInterceptors(ClassSerializerInterceptor)
   async update(
     @Param('id', ParseUUIDPipe) id: string,
     @Body() updateUserDto: UpdateUserDto,
