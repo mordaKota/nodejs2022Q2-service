@@ -1,5 +1,12 @@
 # Home Library Service
 
+## Tips and Tricks
+
+1. You can change the .env file with the new PORT for your convenience. 
+2. For testing you can use OpenAPI documentation: http://localhost:4000/doc/ or you can use Postman collection (REST Service.postman_collection.json in the project root folder)
+
+Have fun =) 
+
 ## Prerequisites
 
 - Git - [Download & Install Git](https://git-scm.com/downloads).
@@ -22,6 +29,12 @@ npm install
 ```
 npm start
 ```
+
+### Development watch mode
+`npm run start:dev`
+
+### Production mode
+`npm run build && npm run start:prod`
 
 After starting the app on port (4000 as default) you can open
 in your browser OpenAPI documentation by typing http://localhost:4000/doc/.
