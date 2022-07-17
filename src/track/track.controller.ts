@@ -3,17 +3,25 @@ import {
   Get,
   Post,
   Body,
-  Patch,
   Param,
   Delete,
+  Put,
+  ParseUUIDPipe,
+  NotFoundException,
+  HttpCode,
+  HttpStatus,
 } from '@nestjs/common';
 import { TrackService } from './track.service';
 import { CreateTrackDto } from './dto/create-track.dto';
 import { UpdateTrackDto } from './dto/update-track.dto';
+import { FavoritesService } from '../favorites/favorites.service';
 
 @Controller('track')
 export class TrackController {
-  constructor(private readonly trackService: TrackService) {}
+  constructor(
+    private readonly trackService: TrackService,
+    private readonly favoritesService: FavoritesService,
+  ) {}
 
   @Post()
   create(@Body() createTrackDto: CreateTrackDto) {
@@ -26,17 +34,34 @@ export class TrackController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.trackService.findOne(+id);
+  async findOne(@Param('id', ParseUUIDPipe) id: string) {
+    const track = this.trackService.findOne(id);
+    if (!track) {
+      throw new NotFoundException(`The track with id = ${id} doesn't exist`);
+    }
+    return track;
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateTrackDto: UpdateTrackDto) {
-    return this.trackService.update(+id, updateTrackDto);
+  @Put(':id')
+  async update(
+    @Param('id', ParseUUIDPipe) id: string,
+    @Body() updateTrackDto: UpdateTrackDto,
+  ) {
+    const track = await this.trackService.update(id, updateTrackDto);
+    if (!track) {
+      throw new NotFoundException(`The track with id = ${id} doesn't exist`);
+    }
+    return track;
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.trackService.remove(+id);
+  @HttpCode(HttpStatus.NO_CONTENT)
+  async remove(@Param('id', ParseUUIDPipe) id: string) {
+    const track = await this.trackService.findOne(id);
+    if (!track) {
+      throw new NotFoundException(`The track with id = ${id} doesn't exist`);
+    }
+    this.trackService.remove(id);
+    //this.favoritesService.removeTrackRef(id);
   }
 }
