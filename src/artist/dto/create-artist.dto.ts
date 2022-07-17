@@ -1,4 +1,7 @@
-import { IsInt, IsString, IsUUID } from 'class-validator';
-import { Exclude } from 'class-transformer';
+import { IsString, IsUUID } from 'class-validator';
 
-export class CreateArtistDto {}
+export class CreateArtistDto {
+  @IsString()
+  name: string;
+  grammy: boolean;
+}
