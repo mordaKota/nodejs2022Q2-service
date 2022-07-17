@@ -29,7 +29,7 @@ export class ArtistController {
 
   @Post()
   async create(@Body() createArtistDto: CreateArtistDto) {
-    return await this.artistService.create(createArtistDto);
+    return this.artistService.create(createArtistDto);
   }
 
   @Get()

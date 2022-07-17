@@ -24,14 +24,14 @@ export class UserController {
 
   @UseInterceptors(ClassSerializerInterceptor)
   @Post()
-  create(@Body() createUserDto: CreateUserDto) {
-    return this.userService.create(createUserDto);
+  async create(@Body() createUserDto: CreateUserDto) {
+    return await this.userService.create(createUserDto);
   }
 
   @Get()
   @UseInterceptors(ClassSerializerInterceptor)
-  findAll() {
-    return this.userService.findAll();
+  async findAll() {
+    return await this.userService.findAll();
   }
 
   @Get(':id')
@@ -71,6 +71,6 @@ export class UserController {
     if (!user) {
       throw new NotFoundException(`The user with id = ${id} doesn't exist`);
     }
-    this.userService.remove(id);
+    await this.userService.remove(id);
   }
 }
