@@ -6,6 +6,17 @@ import { ArtistModule } from './artist/artist.module';
 import { TrackModule } from './track/track.module';
 import { AlbumModule } from './album/album.module';
 import { FavoritesModule } from './favorites/favorites.module';
+import { ConfigModule, ConfigService } from '@nestjs/config';
+import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm';
+import * as config from './config';
+
+const typeOrmFactory = async (
+  configService: ConfigService,
+): Promise<TypeOrmModuleOptions> => {
+  return Object.assign({}, configService.get('database'), {
+    keepConnectionAlive: true,
+  });
+};
 
 @Module({
   imports: [
@@ -14,6 +25,14 @@ import { FavoritesModule } from './favorites/favorites.module';
     TrackModule,
     AlbumModule,
     FavoritesModule,
+    ConfigModule.forRoot({
+      load: [config.database],
+    }),
+    TypeOrmModule.forRootAsync({
+      imports: [ConfigModule],
+      inject: [ConfigService],
+      useFactory: typeOrmFactory,
+    }),
   ],
   controllers: [AppController],
   providers: [AppService],
