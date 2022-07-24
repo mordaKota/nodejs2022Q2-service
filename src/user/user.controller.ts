@@ -17,6 +17,8 @@ import {
 import { UserService } from './user.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
+import UserPassIsWrong from './errors/UserPassIsWrong';
+import UserNotFound from './errors/UserNotFound';
 
 @Controller('user')
 export class UserController {
@@ -54,13 +56,16 @@ export class UserController {
     try {
       user = await this.userService.update(id, updateUserDto);
     } catch (error) {
-      if (error instanceof Error) {
+      if (error instanceof UserPassIsWrong) {
         throw new ForbiddenException('The oldPassword is wrong');
       }
+      if (error instanceof UserNotFound) {
+        throw new NotFoundException(`The user with id = ${id} doesn't exist`);
+      }
+
+      throw error;
     }
-    if (!user) {
-      throw new NotFoundException(`The user with id = ${id} doesn't exist`);
-    }
+
     return user;
   }
 

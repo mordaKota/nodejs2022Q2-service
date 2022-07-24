@@ -1,33 +1,30 @@
 import { Injectable } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
-import { users } from '../in-memory-db';
 import { User } from './entities/user.entity';
-import { v4 } from 'uuid';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+import UserPassIsWrong from './errors/UserPassIsWrong';
+import UserNotFound from './errors/UserNotFound';
 
 @Injectable()
 export class UserService {
-  async create(createUserDto: CreateUserDto): Promise<User> {
-    const newUser = new User({
-      ...createUserDto,
-      id: v4(),
-      version: 1,
-      createdAt: Date.now(),
-      updatedAt: Date.now(),
-    });
+  constructor(
+    @InjectRepository(User)
+    private userRepository: Repository<User>,
+  ) {}
 
-    users.push(newUser);
-    return newUser;
+  async create(createUserDto: CreateUserDto): Promise<User> {
+    const newUser = this.userRepository.create(createUserDto);
+    return this.userRepository.save(newUser);
   }
 
   async findAll(): Promise<User[]> {
-    console.log(users);
-
-    return users;
+    return this.userRepository.find();
   }
 
   async findOne(id: string): Promise<User | undefined> {
-    return users.find((user) => user.id === id);
+    return this.userRepository.findOne({ where: { id: id } });
   }
 
   async update(
@@ -35,18 +32,20 @@ export class UserService {
     updateUserDto: UpdateUserDto,
   ): Promise<User | undefined> {
     const user = await this.findOne(id);
-    if (user) {
-      if (updateUserDto.oldPassword !== user.password) {
-        throw new Error('Not Exists');
-      }
-      user.password = updateUserDto.newPassword;
-      user.version += user.version;
-      user.updatedAt = Date.now();
-      return user;
+
+    if (!user) {
+      throw new UserNotFound();
     }
+
+    if (updateUserDto.oldPassword !== user.password) {
+      throw new UserPassIsWrong();
+    }
+
+    user.password = updateUserDto.newPassword;
+    return this.userRepository.save(user);
   }
 
-  remove(id: string) {
-    users.splice(users.indexOf(users.filter((user) => user.id === id)), 1);
+  async remove(id: string) {
+    await this.userRepository.delete(id);
   }
 }
