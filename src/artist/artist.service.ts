@@ -2,40 +2,41 @@ import { Injectable } from '@nestjs/common';
 import { CreateArtistDto } from './dto/create-artist.dto';
 import { UpdateArtistDto } from './dto/update-artist.dto';
 import { Artist } from './entities/artist.entity';
-import { v4 } from 'uuid';
-import { artists } from '../in-memory-db';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+import ArtistNotFound from './errors/ArtistNotFound';
 
 @Injectable()
 export class ArtistService {
+  constructor(
+    @InjectRepository(Artist)
+    private artistRepository: Repository<Artist>,
+  ) {}
+
   async create(createArtistDto: CreateArtistDto): Promise<Artist> {
-    const newArtist = {
-      ...createArtistDto,
-      id: v4(),
-    };
-    artists.push(newArtist);
-    return newArtist;
+    const newArtist = await this.artistRepository.create(createArtistDto);
+    return this.artistRepository.save(newArtist);
   }
 
   async findAll(): Promise<Artist[]> {
-    return artists;
+    return this.artistRepository.find();
   }
 
   async findOne(id: string): Promise<Artist | undefined> {
-    return artists.find((artist) => artist.id === id);
-  }
-
-  async update(id: string, updateArtistDto: UpdateArtistDto): Promise<Artist> {
-    const artist = await this.findOne(id);
-    if (artist) {
-      Object.assign(artist, updateArtistDto);
+    const artist = await this.artistRepository.findOne({ where: { id: id } });
+    if (!artist) {
+      throw new ArtistNotFound();
     }
     return artist;
   }
 
+  async update(id: string, updateArtistDto: UpdateArtistDto): Promise<Artist> {
+    const artist = await this.findOne(id);
+    Object.assign(artist, updateArtistDto);
+    return this.artistRepository.save(artist);
+  }
+
   async remove(id: string): Promise<void> {
-    artists.splice(
-      artists.indexOf(artists.filter((artist) => artist.id === id)),
-      1,
-    );
+    await this.artistRepository.delete(id);
   }
 }

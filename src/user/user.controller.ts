@@ -24,8 +24,8 @@ import UserNotFound from './errors/UserNotFound';
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
-  @UseInterceptors(ClassSerializerInterceptor)
   @Post()
+  @UseInterceptors(ClassSerializerInterceptor)
   async create(@Body() createUserDto: CreateUserDto) {
     return await this.userService.create(createUserDto);
   }
@@ -39,9 +39,13 @@ export class UserController {
   @Get(':id')
   @UseInterceptors(ClassSerializerInterceptor)
   async findOne(@Param('id', ParseUUIDPipe) id: string) {
-    const user = await this.userService.findOne(id);
-    if (!user) {
-      throw new NotFoundException(`The user with id = ${id} doesn't exist`);
+    let user;
+    try {
+      user = await this.userService.findOne(id);
+    } catch (error) {
+      if (error instanceof UserNotFound) {
+        throw new NotFoundException(`The user with id = ${id} doesn't exist`);
+      }
     }
     return user;
   }
@@ -72,9 +76,13 @@ export class UserController {
   @Delete(':id')
   @HttpCode(HttpStatus.NO_CONTENT)
   async remove(@Param('id', ParseUUIDPipe) id: string): Promise<void> {
-    const user = await this.userService.findOne(id);
-    if (!user) {
-      throw new NotFoundException(`The user with id = ${id} doesn't exist`);
+    try {
+      await this.userService.findOne(id);
+    } catch (error) {
+      if (error instanceof UserNotFound) {
+        throw new NotFoundException(`The user with id = ${id} doesn't exist`);
+      }
+      throw error;
     }
     await this.userService.remove(id);
   }

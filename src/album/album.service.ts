@@ -2,48 +2,59 @@ import { Injectable } from '@nestjs/common';
 import { CreateAlbumDto } from './dto/create-album.dto';
 import { UpdateAlbumDto } from './dto/update-album.dto';
 import { Album } from './entities/album.entity';
-import { v4 } from 'uuid';
-import { albums } from '../in-memory-db';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+import AlbumNotFound from './errors/AlbumNotFound';
+import { ArtistService } from '../artist/artist.service';
 
 @Injectable()
 export class AlbumService {
+  constructor(
+    @InjectRepository(Album)
+    private albumRepository: Repository<Album>,
+    private readonly artistService: ArtistService,
+  ) {}
+
+  async checkArtist(artistId): Promise<string | null> {
+    if (artistId) {
+      const artist = await this.artistService.findOne(artistId);
+      if (!artist) {
+        return null;
+      }
+      return artistId;
+    }
+  }
+
   async create(createAlbumDto: CreateAlbumDto): Promise<Album> {
-    const newAlbum = {
-      ...createAlbumDto,
-      id: v4(),
-    };
-    albums.push(newAlbum);
-    return newAlbum;
+    createAlbumDto.artistId = await this.checkArtist(createAlbumDto.artistId);
+    const newAlbum = await this.albumRepository.create(createAlbumDto);
+    return this.albumRepository.save(newAlbum);
   }
 
   async findAll(): Promise<Album[]> {
-    return albums;
+    return this.albumRepository.find();
   }
 
   async findOne(id: string): Promise<Album | undefined> {
-    return albums.find((album) => album.id === id);
+    const album = await this.albumRepository.findOne({ where: { id: id } });
+    if (!album) {
+      throw new AlbumNotFound();
+    }
+    return album;
   }
 
   async update(
     id: string,
     updateAlbumDto: UpdateAlbumDto,
   ): Promise<Album | undefined> {
+    updateAlbumDto.artistId = await this.checkArtist(updateAlbumDto.artistId);
     const album = await this.findOne(id);
-    if (album) {
-      Object.assign(album, updateAlbumDto);
-    }
-    return album;
+    Object.assign(album, updateAlbumDto);
+    await this.albumRepository.save(album);
+    return this.findOne(id);
   }
 
   async remove(id: string): Promise<void> {
-    albums.splice(albums.indexOf(albums.filter((album) => album.id === id)), 1);
-  }
-
-  removeArtistRef(artistId: string) {
-    albums.forEach((album) => {
-      if (album.artistId === artistId) {
-        album.artistId = null;
-      }
-    });
+    await this.albumRepository.delete(id);
   }
 }

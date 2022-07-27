@@ -1,4 +1,8 @@
 import { User } from '../user/entities/user.entity';
+import { Album } from '../album/entities/album.entity';
+import { Artist } from '../artist/entities/artist.entity';
+import { Track } from '../track/entities/track.entity';
+import { Favorites } from '../favorites/entities/favorite.entity';
 
 export default () => ({
   database: {
@@ -8,7 +12,7 @@ export default () => ({
     username: process.env.DB_USERNAME || 'user',
     password: process.env.DB_PASSWORD || 'pass',
     database: process.env.POSTGRES_DB || 'default',
-    entities: [User],
+    entities: [User, Album, Artist, Track, Favorites],
     synchronize: true,
   },
 });
