@@ -3,6 +3,7 @@ import { Album } from '../album/entities/album.entity';
 import { Artist } from '../artist/entities/artist.entity';
 import { Track } from '../track/entities/track.entity';
 import { Favorites } from '../favorites/entities/favorite.entity';
+import 'dotenv/config';
 
 export default () => ({
   database: {
@@ -13,6 +14,6 @@ export default () => ({
     password: process.env.DB_PASSWORD || 'pass',
     database: process.env.POSTGRES_DB || 'default',
     entities: [User, Album, Artist, Track, Favorites],
-    synchronize: true,
+    synchronize: process.env.DB_HOST || true,
   },
 });

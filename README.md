@@ -32,16 +32,45 @@ For more information about OpenAPI/Swagger please visit https://swagger.io/.
 docker-compose up
 ```
 
+## Generating Migrations
+### 1. Delete volumes to remove the db if exists
+```
+docker-compose down --volumes
+```
+### 2. Run the application with Docker
+```shell
+docker-compose up
+```
+### 3. Generate migrations inside the docker container
+```shell
+docker-compose run main npm run migration:generate
+```
+The migration file should be created. 
+### 4. Rebuild the dist folder in the container
+```shell
+docker-compose run npm run build
+```
+### 5. Run migrations
+```shell
+docker-compose run npm run migration:run
+```
+
+
+## Just running migration with the ready-file
+```shell
+docker-compose run npm run migration:run
+```
+
 ## Vulnerability scanning for Docker local images
 ```
-npm run scan
+npm run scan:db
+npm run scan:app
 ```
 
 ## Images in Docker Hub
 https://hub.docker.com/r/bulatron/task7-application
+
 https://hub.docker.com/r/bulatron/task7-database
-
-
 
 ## Testing
 

@@ -6,7 +6,8 @@
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
-    "scan": "docker scan bulatron/task7-application",
+    "scan:app": "docker scan bulatron/task7-application",
+    "scan:db": "docker scan bulatron/task7-application",
     "prebuild": "rimraf dist",
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
@@ -21,7 +22,7 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "migration:generate": "typeorm-ts-node-commonjs -d ./src/config/migration.ts migration:generate ./src/migrations/migrations",
-    "migration:run": "typeorm-ts-node-commonjs -d ./src/migration.ts migration:run"
+    "migration:run": "typeorm-ts-node-commonjs -d ./src/config/migration.ts migration:run"
   },
   "dependencies": {
     "@nestjs/common": "^8.0.0",
