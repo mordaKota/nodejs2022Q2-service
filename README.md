@@ -32,33 +32,25 @@ For more information about OpenAPI/Swagger please visit https://swagger.io/.
 docker-compose up
 ```
 
-## Start App, Generate and Run Migrations
+## Generate Migrations
 ```shell
 # 1. Delete volumes to remove the db if exists
 docker-compose down --volumes
 
-# 2. Run the application with Docker to have a Postgredb up
-docker-compose up
+# 2. Run the DB with Docker
+docker-compose up -d postgres
 
 # 3. Generate migrations inside the docker container
 docker-compose run main npm run migration:generate
-
-# 4. Rebuild the dist folder in the container
-docker-compose run npm run build
-
-# 5. Rerun the application with Docker
-docker-compose up
-
-# 5. Run migrations
-docker-compose run main npm run migration:run
 ```
-## Run Migrations with the Prebuild Migration File
+
+## Run Migrations
 
 ```shell
 # 1. Run the application with Docker
 docker-compose up
 # 2. Run migrations
-docker-compose run npm run migration:run
+docker-compose run main npm run migration:run
 ```
 
 ## Run App without Migrations (DataSource Synchronize)
