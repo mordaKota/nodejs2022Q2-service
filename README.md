@@ -4,20 +4,21 @@
 
 - Git - [Download & Install Git](https://git-scm.com/downloads).
 - Node.js - [Download & Install Node.js](https://nodejs.org/en/download/) and the npm package manager.
+- Docker - [Download & Install Docker](https://www.docker.com/get-started/)
 
-## Downloading
+## Clone Repo
 
 ```
-git clone {repository URL}
+git clone https://github.com/mordaKota/nodejs2022Q2-service.git
 ```
 
-## Installing NPM modules
+## Install NPM modules
 
 ```
 npm install
 ```
 
-## Running application
+## Run App
 
 ```
 npm start
@@ -32,13 +33,24 @@ For more information about OpenAPI/Swagger please visit https://swagger.io/.
 docker-compose up
 ```
 
-## Vulnerability scanning for Docker local images
+## Build Images with DockerHub
+
+```shell
+# 1. App Image for DockerHub
+docker build . -f docker/application/Dockerfile -t bulatron/task7-application
+# 2. DB Image for DockerHub
+docker build . -f docker/database/Dockerfile -t bulatron/task7-database
 ```
-npm run scan
+
+## Vulnerability Scanning
+```
+npm run scan:db
+npm run scan:app
 ```
 
 ## Images in Docker Hub
 https://hub.docker.com/r/bulatron/task7-application
+
 https://hub.docker.com/r/bulatron/task7-database
 
 
@@ -47,42 +59,22 @@ https://hub.docker.com/r/bulatron/task7-database
 
 After application running open new terminal and enter:
 
-To run all tests without authorization
-
-```
+```shell
+# To run all tests without authorization
 npm run test
-```
-
-To run only one of all test suites
-
-```
+# To run only one of all test suites
 npm run test -- <path to suite>
-```
-
-To run all test with authorization
-
-```
+# To run all test with authorization
 npm run test:auth
-```
-
-To run only specific test suite with authorization
-
-```
+# To run only specific test suite with authorization
 npm run test:auth -- <path to suite>
 ```
 
-### Auto-fix and format
+## Auto-fix and format
 
-```
+```shell
+# Lint
 npm run lint
-```
-
-```
+# Format
 npm run format
 ```
-
-### Debugging in VSCode
-
-Press <kbd>F5</kbd> to debug.
-
-For more information, visit: https://code.visualstudio.com/docs/editor/debugging
