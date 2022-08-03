@@ -31,6 +31,14 @@ export class UserService {
     return user;
   }
 
+  async findOneByName(login: string): Promise<User | undefined> {
+    const user = await this.userRepository.findOneBy({ login });
+    if (!user) {
+      throw new UserNotFound();
+    }
+    return user;
+  }
+
   async update(
     id: string,
     updateUserDto: UpdateUserDto,

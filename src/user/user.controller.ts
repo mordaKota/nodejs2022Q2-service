@@ -19,12 +19,14 @@ import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import UserPassIsWrong from './errors/UserPassIsWrong';
 import UserNotFound from './errors/UserNotFound';
+import { Public } from '../auth/public.decorator';
 
 @Controller('user')
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
   @Post()
+  @Public()
   @UseInterceptors(ClassSerializerInterceptor)
   async create(@Body() createUserDto: CreateUserDto) {
     return await this.userService.create(createUserDto);
