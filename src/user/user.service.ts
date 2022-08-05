@@ -6,6 +6,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import UserPassIsWrong from './errors/UserPassIsWrong';
 import UserNotFound from './errors/UserNotFound';
+import * as bcrypt from 'bcrypt';
 
 @Injectable()
 export class UserService {
@@ -15,6 +16,8 @@ export class UserService {
   ) {}
 
   async create(createUserDto: CreateUserDto): Promise<User> {
+    const salt = await bcrypt.genSalt();
+    createUserDto.password = await bcrypt.hash(createUserDto.password, salt);
     const newUser = this.userRepository.create(createUserDto);
     return this.userRepository.save(newUser);
   }
@@ -49,11 +52,19 @@ export class UserService {
       throw new UserNotFound();
     }
 
-    if (updateUserDto.oldPassword !== user.password) {
+    const isMatch = await bcrypt.compare(
+      updateUserDto.oldPassword,
+      user.password,
+    );
+    if (!isMatch) {
       throw new UserPassIsWrong();
     }
 
-    user.password = updateUserDto.newPassword;
+    user.password = await bcrypt.hash(
+      updateUserDto.newPassword,
+      await bcrypt.genSalt(),
+    );
+
     return this.userRepository.save(user);
   }
 
