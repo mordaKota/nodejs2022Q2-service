@@ -69,11 +69,9 @@ export class FavoritesService {
 
   async removeArtist(id: string): Promise<void> {
     const artist = await this.artistService.findOne(id);
-    console.log('artist', artist);
     const artistInFavs = await this.favoritesRepository.findBy({
       artists: ArrayContains([artist]),
     });
-    console.log('artist in favs', artistInFavs);
     if (!artistInFavs) {
       throw new ArtistNotFound();
     }

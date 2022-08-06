@@ -37,4 +37,8 @@ export class User {
   @Transform(({ value }) => new Date(value).getTime())
   @UpdateDateColumn()
   updatedAt: number;
+
+  @Column({ nullable: true })
+  @Exclude()
+  refreshToken?: string;
 }

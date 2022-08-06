@@ -7,11 +7,8 @@ import { LocalStrategy } from './local.strategy';
 import { JwtModule } from '@nestjs/jwt';
 import { JwtStrategy } from './jwt.strategy';
 import { ConfigModule, ConfigService } from '@nestjs/config';
-
-console.log({
-  secret: `${process.env.JWT_SECRET_KEY}`,
-  signOptions: { expiresIn: '1h' },
-});
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { User } from '../user/entities/user.entity';
 
 @Module({
   imports: [
@@ -29,6 +26,7 @@ console.log({
       },
       inject: [ConfigService],
     }),
+    TypeOrmModule.forFeature([User]),
   ],
   controllers: [AuthController],
   providers: [AuthService, LocalStrategy, JwtStrategy],
