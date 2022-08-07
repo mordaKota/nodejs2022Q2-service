@@ -1,984 +1,896 @@
 {
-	"id": "b06dd588-1b72-47a6-73e4-74a3e6a94a8d",
-	"name": "REST Service",
-	"description": "",
-	"order": [],
-	"folders": [
+	"variables": [],
+	"info": {
+		"name": "REST Service",
+		"_postman_id": "b06dd588-1b72-47a6-73e4-74a3e6a94a8d",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"description": "",
+			"item": [
+				{
+					"name": "[Users] Get All",
+					"request": {
+						"url": "http://localhost:4000/user",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": "[Users] Get All"
+					},
+					"response": []
+				},
+				{
+					"name": "[Users] Create New",
+					"request": {
+						"url": "http://localhost:4000/user",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"login\": \"admin\",\n\t\"password\": \"secret\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "[Users] Get By Id",
+					"request": {
+						"url": {
+							"raw": "http://localhost:4000/user/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"user",
+								":id"
+							],
+							"query": [],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "[Users] Update",
+					"request": {
+						"url": {
+							"raw": "http://localhost:4000/user/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"user",
+								":id"
+							],
+							"query": [],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"oldPassword\": \"secret\",\n\t\"newPassword\": \"secret2\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "[Users] Delete",
+					"request": {
+						"url": {
+							"raw": "http://localhost:4000/user/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"user",
+								":id"
+							],
+							"query": [],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
 		{
 			"name": "Albums",
 			"description": "",
-			"collectionId": "b06dd588-1b72-47a6-73e4-74a3e6a94a8d",
-			"order": [
-				"967275d9-ac7b-184d-7d63-d4a10cfad434",
-				"e58566f3-7dee-6575-62b0-ba22c5f05aba",
-				"fc8906be-d4c6-bcee-d4b1-1c6eeda7dfae",
-				"a1744d49-0113-49fa-c2f6-29b7b90f1e57",
-				"fbf24738-e554-6363-5950-3a99c775a1bd"
-			],
-			"owner": "5592825",
-			"folders_order": [],
-			"id": "cf31b20c-3940-e5d0-1a52-fd06680038f0"
-		},
-		{
-			"name": "Artists",
-			"description": "",
-			"collectionId": "b06dd588-1b72-47a6-73e4-74a3e6a94a8d",
-			"order": [
-				"eff5c4b4-1246-23a1-ec7f-25afa3818271",
-				"a59267e9-7856-7067-fa90-3d8c8af853a0",
-				"4bbc2118-1a73-4cd9-9f00-671053f9745a",
-				"78f557ba-0d65-b50a-bc49-6664f1425324",
-				"98c0dcd4-dd09-c4b7-07b0-6a6cf4dc9bf0"
-			],
-			"owner": "5592825",
-			"folders_order": [],
-			"id": "0ee164e7-5bff-13e8-1123-4ee91f6d7da8"
-		},
-		{
-			"name": "Favourites",
-			"description": "",
-			"collectionId": "b06dd588-1b72-47a6-73e4-74a3e6a94a8d",
-			"order": [
-				"c0d15ef2-35f0-3136-5559-41758137ae8e",
-				"eb03a478-d8ea-31cf-abf1-f3a28a6e0ecf",
-				"90a96b97-ff61-0ae2-bc97-af14f81ba4ab",
-				"54c87863-ce4a-ed7a-8f8d-92dfc1104ac4",
-				"557e25d4-794e-0ab9-ab2a-53a34ff4de0b",
-				"c783d0bc-55db-220d-4d1c-2880b5596102",
-				"c148a0c5-a2d8-9a0c-a5e9-7d57650c9164"
-			],
-			"owner": "5592825",
-			"folders_order": [],
-			"id": "9790d40f-52d1-bfe2-5fc0-670b58a8ffd4"
+			"item": [
+				{
+					"name": "[Albums] Get All",
+					"request": {
+						"url": "http://localhost:4000/album",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "[Albums] Create New",
+					"request": {
+						"url": "http://localhost:4000/album",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Test Album\",\n\t\"year\": 2022,\n\t\"artistId\": \"1ab065fd-09e9-4c14-9963-91fa7e2f1895\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "[Albums] Get By Id",
+					"request": {
+						"url": {
+							"raw": "http://localhost:4000/album/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"album",
+								":id"
+							],
+							"query": [],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "[Albums] Update",
+					"request": {
+						"url": {
+							"raw": "http://localhost:4000/album/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"album",
+								":id"
+							],
+							"query": [],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Test Album2\",\n\t\"year\": 2020,\n\t\"artistId\": \"\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "[Albums] Delete",
+					"request": {
+						"url": {
+							"raw": "http://localhost:4000/album/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"album",
+								":id"
+							],
+							"query": [],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
 		},
 		{
 			"name": "Tracks",
 			"description": "",
-			"collectionId": "b06dd588-1b72-47a6-73e4-74a3e6a94a8d",
-			"order": [
-				"a6ddc9b5-6b3c-6e13-91b0-7899a77c311f",
-				"60559d08-adc1-0157-90f7-30329089e09e",
-				"3c4633c6-ab0a-392a-8819-cc2209f9a8b7",
-				"997f7138-589a-a4d2-4143-e422ac4d99ec",
-				"10a2f8a4-0939-eb19-c89d-3ab61b57a8fd"
-			],
-			"owner": "5592825",
-			"folders_order": [],
-			"id": "9a9db87e-0162-c352-2ca0-4d22a0ec9f4f"
+			"item": [
+				{
+					"name": "[Tracks] Get All",
+					"request": {
+						"url": "http://localhost:4000/track",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "[Tracks] Create New",
+					"request": {
+						"url": "http://localhost:4000/track",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Test Song\",\n\t\"artistId\": \"5f5055d6-47b0-4b7b-bafb-858624f697d4\",\n\t\"albumId\": \"5f5055d6-47b0-4b7b-bafb-858624f697d2\",\n\t\"duration\": 134\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "[Tracks] Get By Id",
+					"request": {
+						"url": {
+							"raw": "http://localhost:4000/track/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"track",
+								":id"
+							],
+							"query": [],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "[Tracks] Update",
+					"request": {
+						"url": {
+							"raw": "http://localhost:4000/track/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"track",
+								":id"
+							],
+							"query": [],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Test Song3\",\n    \"duration\": 23\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "[Tracks] Delete",
+					"request": {
+						"url": {
+							"raw": "http://localhost:4000/track/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"track",
+								":id"
+							],
+							"query": [],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
 		},
 		{
-			"name": "Users",
+			"name": "Artists",
 			"description": "",
-			"collectionId": "b06dd588-1b72-47a6-73e4-74a3e6a94a8d",
-			"order": [
-				"500518d7-12d7-7580-028e-b4980e5f8122",
-				"dbcb8ef9-1ca2-7300-5c13-30659cd19a7e",
-				"1a3ab59d-1f55-4b7a-caf2-fc00d67625ff",
-				"98e64084-1b97-9453-511c-49baa4d063ed",
-				"62188fbb-7cc5-0b3e-6da3-61a760c080bf"
-			],
-			"owner": "5592825",
-			"folders_order": [],
-			"id": "0710083c-3158-bc0e-ae12-bd5b1eca6b90"
-		}
-	],
-	"folders_order": [
-		"0710083c-3158-bc0e-ae12-bd5b1eca6b90",
-		"cf31b20c-3940-e5d0-1a52-fd06680038f0",
-		"9a9db87e-0162-c352-2ca0-4d22a0ec9f4f",
-		"0ee164e7-5bff-13e8-1123-4ee91f6d7da8",
-		"9790d40f-52d1-bfe2-5fc0-670b58a8ffd4"
-	],
-	"timestamp": 1657995794556,
-	"owner": "5592825",
-	"public": false,
-	"requests": [
-		{
-			"id": "10a2f8a4-0939-eb19-c89d-3ab61b57a8fd",
-			"headers": "Content-Type: application/json\n",
-			"headerData": [
+			"item": [
 				{
-					"key": "Content-Type",
-					"value": "application/json",
-					"description": "",
-					"enabled": true
-				}
-			],
-			"url": "http://localhost:4000/track/:id",
-			"queryParams": [],
-			"pathVariables": {
-				"id": ""
-			},
-			"pathVariableData": [
+					"name": "[Artists] Get All",
+					"request": {
+						"url": "http://localhost:4000/artist",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
 				{
-					"key": "id",
-					"value": ""
+					"name": "[Artists] Create New",
+					"request": {
+						"url": "http://localhost:4000/artist",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Test Artist\",\n\t\"grammy\": true\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "[Artists] Get By Id",
+					"request": {
+						"url": {
+							"raw": "http://localhost:4000/artist/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"artist",
+								":id"
+							],
+							"query": [],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "[Artists] Update",
+					"request": {
+						"url": {
+							"raw": "http://localhost:4000/artist/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"artist",
+								":id"
+							],
+							"query": [],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Test Artist2\",\n    \"grammy\": false\n}\n"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "[Artists] Delete",
+					"request": {
+						"url": {
+							"raw": "http://localhost:4000/artist/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"artist",
+								":id"
+							],
+							"query": [],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
 				}
-			],
-			"preRequestScript": null,
-			"method": "DELETE",
-			"collectionId": "b06dd588-1b72-47a6-73e4-74a3e6a94a8d",
-			"data": [],
-			"dataMode": "raw",
-			"name": "[Tracks] Delete",
-			"description": "",
-			"descriptionFormat": "html",
-			"time": 1658055814218,
-			"version": 2,
-			"responses": [],
-			"tests": null,
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"folder": "9a9db87e-0162-c352-2ca0-4d22a0ec9f4f",
-			"rawModeData": ""
+			]
 		},
 		{
-			"id": "1a3ab59d-1f55-4b7a-caf2-fc00d67625ff",
-			"headers": "",
-			"headerData": [],
-			"url": "http://localhost:4000/user/:id",
-			"folder": "0710083c-3158-bc0e-ae12-bd5b1eca6b90",
-			"queryParams": [],
-			"preRequestScript": null,
-			"pathVariables": {
-				"id": ""
-			},
-			"pathVariableData": [
-				{
-					"key": "id",
-					"value": ""
-				}
-			],
-			"method": "GET",
-			"data": null,
-			"dataMode": "params",
-			"version": 2,
-			"tests": null,
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"time": 1658055838713,
-			"name": "[Users] Get By Id",
+			"name": "Favourites",
 			"description": "",
-			"collectionId": "b06dd588-1b72-47a6-73e4-74a3e6a94a8d",
-			"responses": []
+			"item": [
+				{
+					"name": "[Favorites] Get Favorites",
+					"request": {
+						"url": "http://localhost:4000/favs",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "[Favorites] Add Track",
+					"request": {
+						"url": {
+							"raw": "http://localhost:4000/favorites/track/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"favorites",
+								"track",
+								":id"
+							],
+							"query": [],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "[Favorites] Delete Track",
+					"request": {
+						"url": {
+							"raw": "http://localhost:4000/favs/track/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"favs",
+								"track",
+								":id"
+							],
+							"query": [],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "[Favorites] Add Artist",
+					"request": {
+						"url": {
+							"raw": "http://localhost:4000/favs/artist/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"favs",
+								"artist",
+								":id"
+							],
+							"query": [],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "[Favorites] Delete Artist",
+					"request": {
+						"url": {
+							"raw": "http://localhost:4000/favorites/artist/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"favorites",
+								"artist",
+								":id"
+							],
+							"query": [],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "[Favorites] Add Album",
+					"request": {
+						"url": {
+							"raw": "http://localhost:4000/favorites/album/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"favorites",
+								"album",
+								":id"
+							],
+							"query": [],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "[Favorites] Delete Album",
+					"request": {
+						"url": {
+							"raw": "http://localhost:4000/favs/album/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"favs",
+								"album",
+								":id"
+							],
+							"query": [],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
 		},
 		{
-			"id": "3c4633c6-ab0a-392a-8819-cc2209f9a8b7",
-			"headers": "",
-			"headerData": [],
-			"url": "http://localhost:4000/track/:id",
-			"folder": "9a9db87e-0162-c352-2ca0-4d22a0ec9f4f",
-			"queryParams": [],
-			"preRequestScript": null,
-			"pathVariables": {
-				"id": ""
-			},
-			"pathVariableData": [
-				{
-					"key": "id",
-					"value": ""
-				}
-			],
-			"method": "GET",
-			"data": null,
-			"dataMode": "params",
-			"version": 2,
-			"tests": null,
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"time": 1658055867552,
-			"name": "[Tracks] Get By Id",
+			"name": "Auth",
 			"description": "",
-			"collectionId": "b06dd588-1b72-47a6-73e4-74a3e6a94a8d",
-			"responses": []
-		},
-		{
-			"id": "4bbc2118-1a73-4cd9-9f00-671053f9745a",
-			"headers": "",
-			"headerData": [],
-			"url": "http://localhost:4000/artist/:id",
-			"folder": "0ee164e7-5bff-13e8-1123-4ee91f6d7da8",
-			"queryParams": [],
-			"preRequestScript": null,
-			"pathVariables": {
-				"id": ""
-			},
-			"pathVariableData": [
+			"item": [
 				{
-					"key": "id",
-					"value": ""
-				}
-			],
-			"method": "GET",
-			"data": null,
-			"dataMode": "params",
-			"version": 2,
-			"tests": null,
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"time": 1658056046114,
-			"name": "[Artists] Get By Id",
-			"description": "",
-			"collectionId": "b06dd588-1b72-47a6-73e4-74a3e6a94a8d",
-			"responses": []
-		},
-		{
-			"id": "500518d7-12d7-7580-028e-b4980e5f8122",
-			"headers": "",
-			"headerData": [],
-			"url": "http://localhost:4000/user",
-			"queryParams": [],
-			"pathVariables": {},
-			"pathVariableData": [],
-			"preRequestScript": null,
-			"method": "GET",
-			"collectionId": "b06dd588-1b72-47a6-73e4-74a3e6a94a8d",
-			"data": null,
-			"dataMode": "params",
-			"name": "[Users] Get All",
-			"description": "[Users] Get All",
-			"descriptionFormat": "html",
-			"time": 1657996266123,
-			"version": 2,
-			"responses": [],
-			"tests": null,
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"folder": "0710083c-3158-bc0e-ae12-bd5b1eca6b90"
-		},
-		{
-			"id": "54c87863-ce4a-ed7a-8f8d-92dfc1104ac4",
-			"headers": "Content-Type: application/json\n",
-			"headerData": [
+					"name": "[Auth] SignUp",
+					"request": {
+						"url": "http://localhost:4000/auth/signup",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"login\": \"admin\",\n    \"password\": \"secret\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
 				{
-					"key": "Content-Type",
-					"value": "application/json",
-					"description": "",
-					"enabled": true
-				}
-			],
-			"url": "http://localhost:4000/favorites/artist/:id",
-			"folder": "9790d40f-52d1-bfe2-5fc0-670b58a8ffd4",
-			"queryParams": [],
-			"preRequestScript": null,
-			"pathVariables": {
-				"id": ""
-			},
-			"pathVariableData": [
+					"name": "[Auth] Login",
+					"request": {
+						"url": "http://localhost:4000/auth/login",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"login\": \"admin\",\n    \"password\": \"secret\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
 				{
-					"key": "id",
-					"value": ""
+					"name": "[Auth] Refresh",
+					"request": {
+						"url": "http://localhost:4000/auth/refresh",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"refreshToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJsb2dpbiI6ImFkbWluIiwidXNlcklkIjoiYzU3YjIyNjYtYTNjYi00NDI3LTgxYjAtMmU4ZTM0NTc2YmFmIiwiaWF0IjoxNjU5ODA3MTQzLCJleHAiOjE2NTk4OTM1NDN9._Cx5Io0XS3A-fHUn6yse-Ybw97_VXJFE3gt2YEjPtak\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
 				}
-			],
-			"method": "POST",
-			"data": [],
-			"dataMode": "raw",
-			"version": 2,
-			"tests": null,
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"time": 1658066663568,
-			"name": "[Favorites] Add Artist",
-			"description": "",
-			"collectionId": "b06dd588-1b72-47a6-73e4-74a3e6a94a8d",
-			"responses": [],
-			"rawModeData": ""
-		},
-		{
-			"id": "557e25d4-794e-0ab9-ab2a-53a34ff4de0b",
-			"headers": "Content-Type: application/json\n",
-			"headerData": [
-				{
-					"key": "Content-Type",
-					"value": "application/json",
-					"description": "",
-					"enabled": true
-				}
-			],
-			"url": "http://localhost:4000/favorites/artist/:id",
-			"folder": "9790d40f-52d1-bfe2-5fc0-670b58a8ffd4",
-			"queryParams": [],
-			"preRequestScript": null,
-			"pathVariables": {
-				"id": ""
-			},
-			"pathVariableData": [
-				{
-					"key": "id",
-					"value": ""
-				}
-			],
-			"method": "DELETE",
-			"data": [],
-			"dataMode": "raw",
-			"version": 2,
-			"tests": null,
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"time": 1658066686932,
-			"name": "[Favorites] Delete Artist",
-			"description": "",
-			"collectionId": "b06dd588-1b72-47a6-73e4-74a3e6a94a8d",
-			"responses": [],
-			"rawModeData": ""
-		},
-		{
-			"id": "60559d08-adc1-0157-90f7-30329089e09e",
-			"headers": "Content-Type: application/json\n",
-			"headerData": [
-				{
-					"key": "Content-Type",
-					"value": "application/json",
-					"description": "",
-					"enabled": true
-				}
-			],
-			"url": "http://localhost:4000/track",
-			"queryParams": [],
-			"pathVariables": {},
-			"pathVariableData": [],
-			"preRequestScript": null,
-			"method": "POST",
-			"collectionId": "b06dd588-1b72-47a6-73e4-74a3e6a94a8d",
-			"data": [],
-			"dataMode": "raw",
-			"name": "[Tracks] Create New",
-			"description": "",
-			"descriptionFormat": "html",
-			"time": 1658050106479,
-			"version": 2,
-			"responses": [],
-			"tests": null,
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"folder": "9a9db87e-0162-c352-2ca0-4d22a0ec9f4f",
-			"rawModeData": "{\n\t\"name\": \"Test Song\",\n\t\"artistId\": \"5f5055d6-47b0-4b7b-bafb-858624f697d4\",\n\t\"albumId\": \"5f5055d6-47b0-4b7b-bafb-858624f697d2\",\n\t\"duration\": 134\n}"
-		},
-		{
-			"id": "62188fbb-7cc5-0b3e-6da3-61a760c080bf",
-			"headers": "Content-Type: application/json\n",
-			"headerData": [
-				{
-					"key": "Content-Type",
-					"value": "application/json",
-					"description": "",
-					"enabled": true
-				}
-			],
-			"url": "http://localhost:4000/user/:id",
-			"folder": "0710083c-3158-bc0e-ae12-bd5b1eca6b90",
-			"queryParams": [],
-			"preRequestScript": null,
-			"pathVariables": {
-				"id": ""
-			},
-			"pathVariableData": [
-				{
-					"key": "id",
-					"value": ""
-				}
-			],
-			"method": "DELETE",
-			"data": [],
-			"dataMode": "raw",
-			"version": 2,
-			"tests": null,
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"time": 1658055855279,
-			"name": "[Users] Delete",
-			"description": "",
-			"collectionId": "b06dd588-1b72-47a6-73e4-74a3e6a94a8d",
-			"responses": [],
-			"rawModeData": ""
-		},
-		{
-			"id": "78f557ba-0d65-b50a-bc49-6664f1425324",
-			"headers": "Content-Type: application/json\n",
-			"headerData": [
-				{
-					"key": "Content-Type",
-					"value": "application/json",
-					"description": "",
-					"enabled": true
-				}
-			],
-			"url": "http://localhost:4000/artist/:id",
-			"folder": "0ee164e7-5bff-13e8-1123-4ee91f6d7da8",
-			"queryParams": [],
-			"preRequestScript": null,
-			"pathVariables": {
-				"id": ""
-			},
-			"pathVariableData": [
-				{
-					"key": "id",
-					"value": ""
-				}
-			],
-			"method": "PUT",
-			"data": [],
-			"dataMode": "raw",
-			"version": 2,
-			"tests": null,
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"time": 1658077453177,
-			"name": "[Artists] Update",
-			"description": "",
-			"collectionId": "b06dd588-1b72-47a6-73e4-74a3e6a94a8d",
-			"responses": [],
-			"rawModeData": "{\n    \"name\": \"Test Artist2\",\n    \"grammy\": false\n}\n"
-		},
-		{
-			"id": "90a96b97-ff61-0ae2-bc97-af14f81ba4ab",
-			"headers": "Content-Type: application/json\n",
-			"headerData": [
-				{
-					"key": "Content-Type",
-					"value": "application/json",
-					"description": "",
-					"enabled": true
-				}
-			],
-			"url": "http://localhost:4000/favorites/track/:id",
-			"folder": "9790d40f-52d1-bfe2-5fc0-670b58a8ffd4",
-			"queryParams": [],
-			"preRequestScript": null,
-			"pathVariables": {
-				"id": ""
-			},
-			"pathVariableData": [
-				{
-					"key": "id",
-					"value": ""
-				}
-			],
-			"method": "DELETE",
-			"data": [],
-			"dataMode": "raw",
-			"version": 2,
-			"tests": null,
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"time": 1658077476125,
-			"name": "[Favorites] Delete Track",
-			"description": "",
-			"collectionId": "b06dd588-1b72-47a6-73e4-74a3e6a94a8d",
-			"responses": [],
-			"rawModeData": ""
-		},
-		{
-			"id": "967275d9-ac7b-184d-7d63-d4a10cfad434",
-			"headers": "",
-			"headerData": [],
-			"url": "http://localhost:4000/album",
-			"folder": "cf31b20c-3940-e5d0-1a52-fd06680038f0",
-			"queryParams": [],
-			"preRequestScript": null,
-			"pathVariables": {},
-			"pathVariableData": [],
-			"method": "GET",
-			"data": null,
-			"dataMode": "params",
-			"version": 2,
-			"tests": null,
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"time": 1658057271139,
-			"name": "[Albums] Get All",
-			"description": "",
-			"collectionId": "b06dd588-1b72-47a6-73e4-74a3e6a94a8d",
-			"responses": []
-		},
-		{
-			"id": "98c0dcd4-dd09-c4b7-07b0-6a6cf4dc9bf0",
-			"headers": "Content-Type: application/json\n",
-			"headerData": [
-				{
-					"key": "Content-Type",
-					"value": "application/json",
-					"description": "",
-					"enabled": true
-				}
-			],
-			"url": "http://localhost:4000/artist/:id",
-			"folder": "0ee164e7-5bff-13e8-1123-4ee91f6d7da8",
-			"queryParams": [],
-			"preRequestScript": null,
-			"pathVariables": {
-				"id": ""
-			},
-			"pathVariableData": [
-				{
-					"key": "id",
-					"value": ""
-				}
-			],
-			"method": "DELETE",
-			"data": [],
-			"dataMode": "raw",
-			"version": 2,
-			"tests": null,
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"time": 1658057469876,
-			"name": "[Artists] Delete",
-			"description": "",
-			"collectionId": "b06dd588-1b72-47a6-73e4-74a3e6a94a8d",
-			"responses": [],
-			"rawModeData": ""
-		},
-		{
-			"id": "98e64084-1b97-9453-511c-49baa4d063ed",
-			"headers": "Content-Type: application/json\n",
-			"headerData": [
-				{
-					"key": "Content-Type",
-					"value": "application/json",
-					"description": "",
-					"enabled": true
-				}
-			],
-			"url": "http://localhost:4000/user/:id",
-			"folder": "0710083c-3158-bc0e-ae12-bd5b1eca6b90",
-			"queryParams": [],
-			"preRequestScript": null,
-			"pathVariables": {
-				"id": ""
-			},
-			"pathVariableData": [
-				{
-					"key": "id",
-					"value": ""
-				}
-			],
-			"method": "PUT",
-			"data": [],
-			"dataMode": "raw",
-			"version": 2,
-			"tests": null,
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"time": 1658055848779,
-			"name": "[Users] Update",
-			"description": "",
-			"collectionId": "b06dd588-1b72-47a6-73e4-74a3e6a94a8d",
-			"responses": [],
-			"rawModeData": "{\n\t\"oldPassword\": \"secret\",\n\t\"newPassword\": \"secret2\"\n}"
-		},
-		{
-			"id": "997f7138-589a-a4d2-4143-e422ac4d99ec",
-			"headers": "Content-Type: application/json\n",
-			"headerData": [
-				{
-					"key": "Content-Type",
-					"value": "application/json",
-					"description": "",
-					"enabled": true
-				}
-			],
-			"url": "http://localhost:4000/track/:id",
-			"folder": "9a9db87e-0162-c352-2ca0-4d22a0ec9f4f",
-			"queryParams": [],
-			"preRequestScript": null,
-			"pathVariables": {
-				"id": ""
-			},
-			"pathVariableData": [
-				{
-					"key": "id",
-					"value": ""
-				}
-			],
-			"method": "PUT",
-			"data": [],
-			"dataMode": "raw",
-			"version": 2,
-			"tests": null,
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"time": 1658055879721,
-			"name": "[Tracks] Update",
-			"description": "",
-			"collectionId": "b06dd588-1b72-47a6-73e4-74a3e6a94a8d",
-			"responses": [],
-			"rawModeData": "{\n    \"name\": \"Test Song3\",\n    \"duration\": 23\n}"
-		},
-		{
-			"id": "a1744d49-0113-49fa-c2f6-29b7b90f1e57",
-			"headers": "Content-Type: application/json\n",
-			"headerData": [
-				{
-					"key": "Content-Type",
-					"value": "application/json",
-					"description": "",
-					"enabled": true
-				}
-			],
-			"url": "http://localhost:4000/album/:id",
-			"folder": "cf31b20c-3940-e5d0-1a52-fd06680038f0",
-			"queryParams": [],
-			"preRequestScript": null,
-			"pathVariables": {
-				"id": ""
-			},
-			"pathVariableData": [
-				{
-					"key": "id",
-					"value": ""
-				}
-			],
-			"method": "PUT",
-			"data": [],
-			"dataMode": "raw",
-			"version": 2,
-			"tests": null,
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"time": 1658057518419,
-			"name": "[Albums] Update",
-			"description": "",
-			"collectionId": "b06dd588-1b72-47a6-73e4-74a3e6a94a8d",
-			"responses": [],
-			"rawModeData": "{\n\t\"name\": \"Test Album2\",\n\t\"year\": 2020,\n\t\"artistId\": \"\"\n}"
-		},
-		{
-			"id": "a59267e9-7856-7067-fa90-3d8c8af853a0",
-			"headers": "Content-Type: application/json\n",
-			"headerData": [
-				{
-					"key": "Content-Type",
-					"value": "application/json",
-					"description": "",
-					"enabled": true
-				}
-			],
-			"url": "http://localhost:4000/artist",
-			"folder": "0ee164e7-5bff-13e8-1123-4ee91f6d7da8",
-			"queryParams": [],
-			"preRequestScript": null,
-			"pathVariables": {},
-			"pathVariableData": [],
-			"method": "POST",
-			"data": [],
-			"dataMode": "raw",
-			"version": 2,
-			"tests": null,
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"time": 1658056029443,
-			"name": "[Artists] Create New",
-			"description": "",
-			"collectionId": "b06dd588-1b72-47a6-73e4-74a3e6a94a8d",
-			"responses": [],
-			"rawModeData": "{\n\t\"name\": \"Test Artist\",\n\t\"grammy\": true\n}"
-		},
-		{
-			"id": "a6ddc9b5-6b3c-6e13-91b0-7899a77c311f",
-			"headers": "",
-			"headerData": [],
-			"url": "http://localhost:4000/track",
-			"queryParams": [],
-			"pathVariables": {},
-			"pathVariableData": [],
-			"preRequestScript": null,
-			"method": "GET",
-			"collectionId": "b06dd588-1b72-47a6-73e4-74a3e6a94a8d",
-			"data": null,
-			"dataMode": "params",
-			"name": "[Tracks] Get All",
-			"description": "",
-			"descriptionFormat": "html",
-			"time": 1658049993687,
-			"version": 2,
-			"responses": [],
-			"tests": null,
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"folder": "9a9db87e-0162-c352-2ca0-4d22a0ec9f4f"
-		},
-		{
-			"id": "c0d15ef2-35f0-3136-5559-41758137ae8e",
-			"headers": "",
-			"headerData": [],
-			"url": "http://localhost:4000/favs",
-			"folder": "9790d40f-52d1-bfe2-5fc0-670b58a8ffd4",
-			"queryParams": [],
-			"preRequestScript": null,
-			"pathVariables": {},
-			"pathVariableData": [],
-			"method": "GET",
-			"data": null,
-			"dataMode": "params",
-			"version": 2,
-			"tests": null,
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"time": 1658070228068,
-			"name": "[Favorites] Get Favorites",
-			"description": "",
-			"collectionId": "b06dd588-1b72-47a6-73e4-74a3e6a94a8d",
-			"responses": []
-		},
-		{
-			"id": "c148a0c5-a2d8-9a0c-a5e9-7d57650c9164",
-			"headers": "Content-Type: application/json\n",
-			"headerData": [
-				{
-					"key": "Content-Type",
-					"value": "application/json",
-					"description": "",
-					"enabled": true
-				}
-			],
-			"url": "http://localhost:4000/favs/album/13d5403d-30fd-4302-a5cf-6857d83214a7",
-			"folder": "9790d40f-52d1-bfe2-5fc0-670b58a8ffd4",
-			"queryParams": [],
-			"preRequestScript": null,
-			"pathVariables": {},
-			"pathVariableData": [],
-			"method": "DELETE",
-			"data": [],
-			"dataMode": "raw",
-			"version": 2,
-			"tests": null,
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"time": 1658070317691,
-			"name": "[Favorites] Delete Album",
-			"description": "",
-			"collectionId": "b06dd588-1b72-47a6-73e4-74a3e6a94a8d",
-			"responses": [],
-			"rawModeData": ""
-		},
-		{
-			"id": "c783d0bc-55db-220d-4d1c-2880b5596102",
-			"headers": "Content-Type: application/json\n",
-			"headerData": [
-				{
-					"key": "Content-Type",
-					"value": "application/json",
-					"description": "",
-					"enabled": true
-				}
-			],
-			"url": "http://localhost:4000/favorites/album/:id",
-			"folder": "9790d40f-52d1-bfe2-5fc0-670b58a8ffd4",
-			"queryParams": [],
-			"preRequestScript": null,
-			"pathVariables": {
-				"id": ""
-			},
-			"pathVariableData": [
-				{
-					"key": "id",
-					"value": ""
-				}
-			],
-			"method": "POST",
-			"data": [],
-			"dataMode": "raw",
-			"version": 2,
-			"tests": null,
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"time": 1658066705303,
-			"name": "[Favorites] Add Album",
-			"description": "",
-			"collectionId": "b06dd588-1b72-47a6-73e4-74a3e6a94a8d",
-			"responses": [],
-			"rawModeData": ""
-		},
-		{
-			"id": "dbcb8ef9-1ca2-7300-5c13-30659cd19a7e",
-			"headers": "Content-Type: application/json\n",
-			"headerData": [
-				{
-					"key": "Content-Type",
-					"value": "application/json",
-					"description": "",
-					"enabled": true
-				}
-			],
-			"url": "http://localhost:4000/user",
-			"folder": "0710083c-3158-bc0e-ae12-bd5b1eca6b90",
-			"queryParams": [],
-			"preRequestScript": null,
-			"pathVariables": {},
-			"pathVariableData": [],
-			"method": "POST",
-			"data": [],
-			"dataMode": "raw",
-			"tests": null,
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"time": 1657995895978,
-			"name": "[Users] Create New",
-			"description": "",
-			"collectionId": "b06dd588-1b72-47a6-73e4-74a3e6a94a8d",
-			"responses": [],
-			"rawModeData": "{\n\t\"login\": \"admin\",\n\t\"password\": \"secret\"\n}"
-		},
-		{
-			"id": "e58566f3-7dee-6575-62b0-ba22c5f05aba",
-			"headers": "Content-Type: application/json\n",
-			"headerData": [
-				{
-					"key": "Content-Type",
-					"value": "application/json",
-					"description": "",
-					"enabled": true
-				}
-			],
-			"url": "http://localhost:4000/album",
-			"folder": "cf31b20c-3940-e5d0-1a52-fd06680038f0",
-			"queryParams": [],
-			"preRequestScript": null,
-			"pathVariables": {},
-			"pathVariableData": [],
-			"method": "POST",
-			"data": [],
-			"dataMode": "raw",
-			"version": 2,
-			"tests": null,
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"time": 1658057429295,
-			"name": "[Albums] Create New",
-			"description": "",
-			"collectionId": "b06dd588-1b72-47a6-73e4-74a3e6a94a8d",
-			"responses": [],
-			"rawModeData": "{\n\t\"name\": \"Test Album\",\n\t\"year\": 2022,\n\t\"artistId\": \"1ab065fd-09e9-4c14-9963-91fa7e2f1895\"\n}"
-		},
-		{
-			"id": "eb03a478-d8ea-31cf-abf1-f3a28a6e0ecf",
-			"headers": "Content-Type: application/json\n",
-			"headerData": [
-				{
-					"key": "Content-Type",
-					"value": "application/json",
-					"description": "",
-					"enabled": true
-				}
-			],
-			"url": "http://localhost:4000/favorites/track/:id",
-			"folder": "9790d40f-52d1-bfe2-5fc0-670b58a8ffd4",
-			"queryParams": [],
-			"preRequestScript": null,
-			"pathVariables": {
-				"id": ""
-			},
-			"pathVariableData": [
-				{
-					"key": "id",
-					"value": ""
-				}
-			],
-			"method": "POST",
-			"data": [],
-			"dataMode": "raw",
-			"version": 2,
-			"tests": null,
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"time": 1658077467379,
-			"name": "[Favorites] Add Track",
-			"description": "",
-			"collectionId": "b06dd588-1b72-47a6-73e4-74a3e6a94a8d",
-			"responses": [],
-			"rawModeData": ""
-		},
-		{
-			"id": "eff5c4b4-1246-23a1-ec7f-25afa3818271",
-			"headers": "",
-			"headerData": [],
-			"url": "http://localhost:4000/artist",
-			"folder": "0ee164e7-5bff-13e8-1123-4ee91f6d7da8",
-			"queryParams": [],
-			"preRequestScript": null,
-			"pathVariables": {},
-			"pathVariableData": [],
-			"method": "GET",
-			"data": null,
-			"dataMode": "params",
-			"version": 2,
-			"tests": null,
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"time": 1658055949092,
-			"name": "[Artists] Get All",
-			"description": "",
-			"collectionId": "b06dd588-1b72-47a6-73e4-74a3e6a94a8d",
-			"responses": []
-		},
-		{
-			"id": "fbf24738-e554-6363-5950-3a99c775a1bd",
-			"headers": "Content-Type: application/json\n",
-			"headerData": [
-				{
-					"key": "Content-Type",
-					"value": "application/json",
-					"description": "",
-					"enabled": true
-				}
-			],
-			"url": "http://localhost:4000/album/:id",
-			"folder": "0ee164e7-5bff-13e8-1123-4ee91f6d7da8",
-			"queryParams": [],
-			"preRequestScript": null,
-			"pathVariables": {
-				"id": ""
-			},
-			"pathVariableData": [
-				{
-					"key": "id",
-					"value": ""
-				}
-			],
-			"method": "DELETE",
-			"data": [],
-			"dataMode": "raw",
-			"version": 2,
-			"tests": null,
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"time": 1658057327500,
-			"name": "[Albums] Delete",
-			"description": "",
-			"collectionId": "b06dd588-1b72-47a6-73e4-74a3e6a94a8d",
-			"responses": [],
-			"rawModeData": ""
-		},
-		{
-			"id": "fc8906be-d4c6-bcee-d4b1-1c6eeda7dfae",
-			"headers": "",
-			"headerData": [],
-			"url": "http://localhost:4000/album/:id",
-			"folder": "cf31b20c-3940-e5d0-1a52-fd06680038f0",
-			"queryParams": [],
-			"preRequestScript": null,
-			"pathVariables": {
-				"id": ""
-			},
-			"pathVariableData": [
-				{
-					"key": "id",
-					"value": ""
-				}
-			],
-			"method": "GET",
-			"data": null,
-			"dataMode": "params",
-			"version": 2,
-			"tests": null,
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"time": 1658057298264,
-			"name": "[Albums] Get By Id",
-			"description": "",
-			"collectionId": "b06dd588-1b72-47a6-73e4-74a3e6a94a8d",
-			"responses": []
+			]
 		}
 	]
 }
