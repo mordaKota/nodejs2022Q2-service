@@ -43,6 +43,9 @@ export class LoggerService extends ConsoleLogger {
   }
 
   private writeToFile(message: string, type: string) {
+    if (!fs.existsSync(path.join(process.cwd(), 'logs'))) {
+      fs.mkdirSync(path.join(process.cwd(), 'logs'));
+    }
     const logFileName = path.join(process.cwd(), 'logs', `${type}.log`);
     if (fs.existsSync(logFileName)) {
       const stat = fs.statSync(logFileName);
