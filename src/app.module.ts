@@ -12,6 +12,8 @@ import { AuthModule } from './auth/auth.module';
 import * as config from './config';
 import { APP_GUARD } from '@nestjs/core';
 import { JwtAuthGuard } from './auth/jwt-auth.guard';
+import { LoggerService } from './logger/logger.service';
+import { LoggerModule } from './logger/logger.module';
 
 const typeOrmFactory = async (
   configService: ConfigService,
@@ -37,6 +39,7 @@ const typeOrmFactory = async (
       useFactory: typeOrmFactory,
     }),
     AuthModule,
+    LoggerModule,
   ],
   controllers: [AppController],
   providers: [
@@ -45,6 +48,7 @@ const typeOrmFactory = async (
       provide: APP_GUARD,
       useClass: JwtAuthGuard,
     },
+    LoggerService,
   ],
 })
 export class AppModule {}
