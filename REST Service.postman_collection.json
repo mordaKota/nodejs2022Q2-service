@@ -1,0 +1,896 @@
+{
+	"variables": [],
+	"info": {
+		"name": "REST Service",
+		"_postman_id": "b06dd588-1b72-47a6-73e4-74a3e6a94a8d",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"description": "",
+			"item": [
+				{
+					"name": "[Users] Get All",
+					"request": {
+						"url": "http://localhost:4000/user",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": "[Users] Get All"
+					},
+					"response": []
+				},
+				{
+					"name": "[Users] Create New",
+					"request": {
+						"url": "http://localhost:4000/user",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"login\": \"admin\",\n\t\"password\": \"secret\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "[Users] Get By Id",
+					"request": {
+						"url": {
+							"raw": "http://localhost:4000/user/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"user",
+								":id"
+							],
+							"query": [],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "[Users] Update",
+					"request": {
+						"url": {
+							"raw": "http://localhost:4000/user/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"user",
+								":id"
+							],
+							"query": [],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"oldPassword\": \"secret\",\n\t\"newPassword\": \"secret2\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "[Users] Delete",
+					"request": {
+						"url": {
+							"raw": "http://localhost:4000/user/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"user",
+								":id"
+							],
+							"query": [],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Albums",
+			"description": "",
+			"item": [
+				{
+					"name": "[Albums] Get All",
+					"request": {
+						"url": "http://localhost:4000/album",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "[Albums] Create New",
+					"request": {
+						"url": "http://localhost:4000/album",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Test Album\",\n\t\"year\": 2022,\n\t\"artistId\": \"1ab065fd-09e9-4c14-9963-91fa7e2f1895\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "[Albums] Get By Id",
+					"request": {
+						"url": {
+							"raw": "http://localhost:4000/album/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"album",
+								":id"
+							],
+							"query": [],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "[Albums] Update",
+					"request": {
+						"url": {
+							"raw": "http://localhost:4000/album/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"album",
+								":id"
+							],
+							"query": [],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Test Album2\",\n\t\"year\": 2020,\n\t\"artistId\": \"\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "[Albums] Delete",
+					"request": {
+						"url": {
+							"raw": "http://localhost:4000/album/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"album",
+								":id"
+							],
+							"query": [],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Tracks",
+			"description": "",
+			"item": [
+				{
+					"name": "[Tracks] Get All",
+					"request": {
+						"url": "http://localhost:4000/track",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "[Tracks] Create New",
+					"request": {
+						"url": "http://localhost:4000/track",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Test Song\",\n\t\"artistId\": \"5f5055d6-47b0-4b7b-bafb-858624f697d4\",\n\t\"albumId\": \"5f5055d6-47b0-4b7b-bafb-858624f697d2\",\n\t\"duration\": 134\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "[Tracks] Get By Id",
+					"request": {
+						"url": {
+							"raw": "http://localhost:4000/track/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"track",
+								":id"
+							],
+							"query": [],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "[Tracks] Update",
+					"request": {
+						"url": {
+							"raw": "http://localhost:4000/track/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"track",
+								":id"
+							],
+							"query": [],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Test Song3\",\n    \"duration\": 23\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "[Tracks] Delete",
+					"request": {
+						"url": {
+							"raw": "http://localhost:4000/track/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"track",
+								":id"
+							],
+							"query": [],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Artists",
+			"description": "",
+			"item": [
+				{
+					"name": "[Artists] Get All",
+					"request": {
+						"url": "http://localhost:4000/artist",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "[Artists] Create New",
+					"request": {
+						"url": "http://localhost:4000/artist",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Test Artist\",\n\t\"grammy\": true\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "[Artists] Get By Id",
+					"request": {
+						"url": {
+							"raw": "http://localhost:4000/artist/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"artist",
+								":id"
+							],
+							"query": [],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "[Artists] Update",
+					"request": {
+						"url": {
+							"raw": "http://localhost:4000/artist/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"artist",
+								":id"
+							],
+							"query": [],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Test Artist2\",\n    \"grammy\": false\n}\n"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "[Artists] Delete",
+					"request": {
+						"url": {
+							"raw": "http://localhost:4000/artist/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"artist",
+								":id"
+							],
+							"query": [],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Favourites",
+			"description": "",
+			"item": [
+				{
+					"name": "[Favorites] Get Favorites",
+					"request": {
+						"url": "http://localhost:4000/favs",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "[Favorites] Add Track",
+					"request": {
+						"url": {
+							"raw": "http://localhost:4000/favorites/track/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"favorites",
+								"track",
+								":id"
+							],
+							"query": [],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "[Favorites] Delete Track",
+					"request": {
+						"url": {
+							"raw": "http://localhost:4000/favs/track/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"favs",
+								"track",
+								":id"
+							],
+							"query": [],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "[Favorites] Add Artist",
+					"request": {
+						"url": {
+							"raw": "http://localhost:4000/favs/artist/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"favs",
+								"artist",
+								":id"
+							],
+							"query": [],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "[Favorites] Delete Artist",
+					"request": {
+						"url": {
+							"raw": "http://localhost:4000/favorites/artist/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"favorites",
+								"artist",
+								":id"
+							],
+							"query": [],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "[Favorites] Add Album",
+					"request": {
+						"url": {
+							"raw": "http://localhost:4000/favorites/album/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"favorites",
+								"album",
+								":id"
+							],
+							"query": [],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "[Favorites] Delete Album",
+					"request": {
+						"url": {
+							"raw": "http://localhost:4000/favs/album/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"favs",
+								"album",
+								":id"
+							],
+							"query": [],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"description": "",
+			"item": [
+				{
+					"name": "[Auth] SignUp",
+					"request": {
+						"url": "http://localhost:4000/auth/signup",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"login\": \"admin\",\n    \"password\": \"secret\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "[Auth] Login",
+					"request": {
+						"url": "http://localhost:4000/auth/login",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"login\": \"admin\",\n    \"password\": \"secret\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "[Auth] Refresh",
+					"request": {
+						"url": "http://localhost:4000/auth/refresh",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"refreshToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJsb2dpbiI6ImFkbWluIiwidXNlcklkIjoiYzU3YjIyNjYtYTNjYi00NDI3LTgxYjAtMmU4ZTM0NTc2YmFmIiwiaWF0IjoxNjU5ODA3MTQzLCJleHAiOjE2NTk4OTM1NDN9._Cx5Io0XS3A-fHUn6yse-Ybw97_VXJFE3gt2YEjPtak\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
