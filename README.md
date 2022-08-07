@@ -104,3 +104,19 @@ npm run lint
 # Format
 npm run format
 ```
+
+## Logs
+
+After starting, the application will create the **logs** **folder** at the root of the application and will add the **common.log** file.
+
+If you decide to send the incorrect request, the application will create the **error.log** file with the specified error message and trace.
+
+You can specify the logging level in the .env file as follows:
+
+| Logging Level | Logs                                         |
+|---------------|----------------------------------------------|
+| 0             | error                                        |
+| 1             | error<br/>warn                               |
+| 2             | error<br/>warn<br/>log                       |
+| 3             | error<br/>warn<br/>log<br/>debug             |
+| 4             | error<br/>warn<br/>log<br/>debug<br/>verbose |
